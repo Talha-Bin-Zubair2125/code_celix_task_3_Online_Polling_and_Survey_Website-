@@ -67,11 +67,12 @@ export const CreatePoll = ({ onPollCreated }) => {
       setAnswers(["", ""]);
       setExpiresAt("");
       setAllowMultiple(false);
-      setAllowSingle(false);
       setCategory("Other");
 
       if (onPollCreated) onPollCreated();
     } catch (err) {
+      console.log(err);
+      
       setError(err.response?.data?.message || "Failed to create poll");
     } finally {
       setLoading(false);
@@ -179,10 +180,7 @@ export const CreatePoll = ({ onPollCreated }) => {
               <input
                 type="checkbox"
                 checked={allowMultiple}
-                onChange={(e) => {
-                  setAllowMultiple(e.target.checked)
-                  console.log(allowMultiple);
-                }}
+                onChange={(e) => setAllowMultiple(e.target.checked)}
                 disabled={loading}
               />
               Allow Multiple Answers

@@ -55,6 +55,8 @@ exports.createPoll = async (req, res) => {
       category: category || 'Other'
     });
 
+    console.log(poll);
+    
     // Update user's created polls count
     user.createdPollsCount += 1;
     await user.save();
